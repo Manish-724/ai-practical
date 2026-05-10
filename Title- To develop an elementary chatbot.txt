@@ -1,0 +1,26 @@
+Title:- To develop an elementary chatbot for a suitable customer interaction application that can effectively and efficiently engage with customers, provide them with relevant information, and improve their overall experience. Specific goals for the chatbot include: Understanding and responding to customer inquiries: The chatbot should be able to accurately understand and respond to customer inquiries in a timely manner. It should be able to interpret the intent of the customer's message and provide relevant information.
+Code:-
+import random
+class Chatbot:
+def __init__(self, name):
+self.name = name
+def respond(self, message):
+message = message.lower()
+greetings = ["hello!", "hi there!", "hey!", "greetings!"]
+questions = ["I'm not sure, can you provide more information?", "I am sorry, I do not have that information.", "I am afraid I cannot help you with that.", "I think that is beyond my capabilities."]
+goodbyes = ["Goodbye!", "See you soon!", "Take care!", "Bye!"]
+if any(word in message for word in ['hello', 'hi', 'hey', 'greetings']):
+return random.choice(greetings)
+if any(word in message for word in ['what', 'where', 'when', 'why', 'how']):
+return random.choice(questions)
+if any(word in message for word in ['goodbye', 'bye', 'see you', 'take care']):
+return random.choice(goodbyes)
+return "I'm sorry, I did not understand your request."
+chatbot = Chatbot("Customer Service Bot")
+while True:
+message = input(f"{chatbot.name}: ")
+if any(word in message.lower() for word in ['goodbye', 'bye', 'see you', 'take care']):
+print(chatbot.respond(message))
+break
+response = chatbot.respond(message)
+print(f"{chatbot.name}: {response}")
